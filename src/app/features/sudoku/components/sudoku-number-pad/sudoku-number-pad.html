@@ -1,0 +1,16 @@
+<div class="number-pad grid grid-cols-3 md:flex md:flex-row gap-2 mt-4">
+    @for (item of numbers; track item) {
+    <button
+        class="md:min-w-12 md:min-h-12 min-w-10 min-h-10 bg-violet-100 hover:bg-violet-200 text-violet-800 font-medium rounded-lg shadow focus:outline-none transition-colors cursor-pointer"
+        (click)="numberClicked.emit(item)"
+    >
+        {{item}}
+    </button>
+    }
+    <button
+        class="w-full md:min-w-12 md:min-h-12 min-w-10 min-h-12 bg-neutral-200 hover:bg-neutral-300 text-neutral-700 font-medium rounded-lg shadow transition-colors cursor-pointer col-span-3"
+        (click)="numberClicked.emit(0)"
+    >
+        Clear
+    </button>
+</div>

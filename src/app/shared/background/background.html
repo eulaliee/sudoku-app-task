@@ -1,0 +1,26 @@
+<!-- <div class="relative w-full h-screen overflow-hidden">
+  <video
+    class="absolute inset-0 w-full h-full object-cover"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source src="/lines.mp4" type="video/mp4" />
+  </video>
+
+  <div class="relative z-10">
+    <ng-content></ng-content>
+  </div>
+</div> -->
+
+<div class="relative w-full h-screen overflow-hidden">
+  <div
+    class="absolute inset-0 bg-cover bg-center blur-sm"
+    style="background-image: url('/create.jpg')"
+  ></div>
+
+  <div class="relative z-10">
+    <ng-content></ng-content>
+  </div>
+</div>

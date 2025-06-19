@@ -1,0 +1,40 @@
+<div class="w-fit mx-auto relative">
+  <div
+    [formGroup]="form()"
+    class="inline-block border-2 border-neutral-700 shadow-md bg-gradient-to-br from-neutral-50 to-neutral-100 transition-filter duration-200"
+    [class.blur-sm]="loading()"
+    [class.pointer-events-none]="loading()"
+  >
+    @for (row of board(); let rowIdx = $index; track rowIdx) {
+    <div class="grid grid-cols-9">
+      @for (cell of row; let cellIdx = $index; track cellIdx) { @if
+      (locked()[rowIdx][cellIdx]) {
+      <div
+        class="md:w-12 md:h-12 min-w-10 min-h-10 w-full h-full flex items-center justify-center font-semibold text-sm text-neutral-800 bg-neutral-200 border border-neutral-700 select-none transition [box-shadow:0_1px_4px_0_rgba(160,130,255,0.10)]"
+        appCellBorder
+        [rowIdx]="rowIdx"
+        [colIdx]="cellIdx"
+      >
+        {{ cell }}
+      </div>
+      } @else {
+      <input
+        [formControlName]="ctrlKey(rowIdx, cellIdx)"
+        (focus)="onFocusCell($event, rowIdx, cellIdx)"
+        autocomplete="off"
+        inputmode="numeric"
+        class="caret-transparent md:w-12 md:h-12 min-w-10 min-h-10 w-full h-full text-center font-semibold text-violet-700 bg-neutral-50 border border-neutral-700 focus:outline-none focus:bg-violet-200 transition text-sm placeholder-neutral-300 [box-shadow:0_1px_4px_0_rgba(160,130,255,0.06)]"
+        [class.bg-violet-200]="selectedCell()?.row === rowIdx && selectedCell()?.col === cellIdx"
+        appCellBorder
+        [rowIdx]="rowIdx"
+        [colIdx]="cellIdx"
+      />
+      } }
+    </div>
+    }
+  </div>
+
+  @if (loading()) {
+  <app-spinner />
+  }
+</div>

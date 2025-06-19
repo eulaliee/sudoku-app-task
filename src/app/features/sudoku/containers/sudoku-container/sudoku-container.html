@@ -1,0 +1,31 @@
+<div class="max-w-xl mx-auto p-4 overflow-y-auto h-[calc(100vh-64px)]">
+  <div class="flex-1 overflow-y-auto">
+    <app-sudoku-controls
+      [loading]="loading() ?? false"
+      [status]="status() ?? 'defaultStatus'"
+      [selecteDifficulty]="gameDifficulty()"
+      (newGame)="onNewGame($event)"
+      (validate)="onValidate()"
+      (solve)="onSolve()"
+      (resetBoard)="onResetBoard()"
+    ></app-sudoku-controls>
+    @if (working(); as working) {
+    <app-sudoku-board
+      [board]="working"
+      [original]="original()"
+      [loading]="loading() ?? false"
+      (cellValue)="onCellValueChange($event)"
+      (selectCell)="onSelectedCellChange($event)"
+      [selectedCell]="selectedCell()"
+    ></app-sudoku-board>
+    }
+    <app-sudoku-number-pad
+      (numberClicked)="onNumberClicked($event)"
+    ></app-sudoku-number-pad>
+
+    <app-status-banner
+      [status]="status() ?? 'idle'"
+      [loading]="loading() ?? false"
+    ></app-status-banner>
+  </div>
+</div>

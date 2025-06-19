@@ -1,0 +1,46 @@
+<div class="flex flex-col items-center gap-4 mb-6">
+  <div class="flex flex-row gap-4">
+    <div class="flex items-center gap-4">
+      @for (d of difficulties; track d.value) {
+      <button
+        type="button"
+        class="text-lg px-1 transition focus:outline-none disabled:opacity-50 cursor-pointer"
+        [disabled]="loading()"
+        (click)="selectDifficulty(d.value)"
+        [class.text-violet-600]="selecteDifficulty() === d.value"
+        [class.font-semibold]="selecteDifficulty() === d.value"
+        [class.text-gray-600]="selecteDifficulty() !== d.value"
+      >
+        {{ d.label }}
+      </button>
+      }
+    </div>
+  </div>
+  <div class="flex gap-2">
+    <button
+      type="button"
+      [disabled]="loading()"
+      (click)="validate.emit()"
+      class="bg-emerald-100 text-emerald-700 font-medium px-4 py-1 rounded-md border border-emerald-200 shadow-sm hover:bg-emerald-100 hover:border-emerald-300 focus:ring-2 focus:ring-emerald-100 focus:outline-none transition disabled:opacity-60 cursor-pointer"
+    >
+      Validate
+    </button>
+
+    <button
+      type="button"
+      [disabled]="loading()"
+      (click)="solve.emit()"
+      class="bg-violet-100 text-violet-700 font-medium px-4 py-1 rounded-md border border-violet-200 shadow-sm hover:bg-violet-100 hover:border-violet-300 focus:ring-2 focus:ring-violet-100 focus:outline-none transition disabled:opacity-60 cursor-pointer"
+    >
+      Show Solution
+    </button>
+    <button
+      type="button"
+      [disabled]="loading()"
+      (click)="resetBoard.emit()"
+      class="bg-neutral-100 text-neutral-700 font-medium px-4 py-1 rounded-md border border-neutral-200 shadow-sm hover:bg-neutral-100 hover:border-neutral-300 focus:ring-2 focus:ring-neutral-100 focus:outline-none transition disabled:opacity-60 cursor-pointer"
+    >
+      Reset
+    </button>
+  </div>
+</div>
