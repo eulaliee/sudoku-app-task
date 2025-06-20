@@ -24,7 +24,7 @@ export const getBannerProps = (status: SudokuStatus) => {
     case 'broken':
       return {
         type: 'warning',
-        message: `Oh no! There are some mistakes in the puzzle. Double check and try again!`,
+        message: `Oh no! There are some mistakes in the puzzle. Try again!`,
       };
     case 'error':
       return {
