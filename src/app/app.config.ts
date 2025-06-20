@@ -22,10 +22,10 @@ export const appConfig: ApplicationConfig = {
     provideStore(
       [SudokuState],
       withNgxsLoggerPlugin({
-        disabled: false,
+        disabled: true,
       }),
       withNgxsReduxDevtoolsPlugin({
-        disabled: false, // Set to true to disable Redux DevTools in production
+        disabled: true, 
       }),
       withNgxsStoragePlugin({
         keys: ['sudoku'],

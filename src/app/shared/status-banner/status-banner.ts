@@ -32,7 +32,7 @@ export class StatusBanner {
       (props.type === 'success' ||
         props.type === 'info' ||
         props.type === 'warning')
-      ? `px-2 py-2 rounded font-semibold ${this.statusClasses[props.type]}`
+      ? `inline-block px-2 py-2 rounded font-semibold ${this.statusClasses[props.type]}`
       : '';
   });
 }

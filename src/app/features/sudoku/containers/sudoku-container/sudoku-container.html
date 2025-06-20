@@ -1,5 +1,5 @@
-<div class="max-w-xl mx-auto p-4 overflow-y-auto h-[calc(100vh-64px)]">
-  <div class="flex-1 overflow-y-auto">
+<div class="w-full max-w-xl mx-auto p-4 h-[calc(100vh-64px)] flex flex-col">
+  <div class="flex-1 min-h-0 overflow-y-auto flex flex-col">
     <app-sudoku-controls
       [loading]="loading() ?? false"
       [status]="status() ?? 'defaultStatus'"
@@ -11,6 +11,7 @@
     ></app-sudoku-controls>
     @if (working(); as working) {
     <app-sudoku-board
+      class="w-full max-w-full"
       [board]="working"
       [original]="original()"
       [loading]="loading() ?? false"
@@ -20,6 +21,7 @@
     ></app-sudoku-board>
     }
     <app-sudoku-number-pad
+      class="w-full max-w-full"
       (numberClicked)="onNumberClicked($event)"
     ></app-sudoku-number-pad>
 

@@ -25,6 +25,7 @@ import {
   BoardCell,
 } from '../../../../core/models/sudoku.types';
 import { BOARD_SIZE, ONE_TO_N } from '../../../../core/constants/board-size';
+import { ScreenService } from '../../../../core/services/screen';
 
 @Component({
   selector: 'app-sudoku-board',
@@ -42,6 +43,7 @@ export class SudokuBoard {
   selectCell = output<BoardCell>();
   selectedCell = input<BoardCell | null>();
   cd = inject(ChangeDetectorRef);
+  screen = inject(ScreenService);
 
   private readonly destroyRef = inject(DestroyRef);
 
